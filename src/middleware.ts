@@ -4,7 +4,7 @@ import { NextRequest } from 'next/server'
 // This function can be marked `async` if using `await` inside
 export function middleware(request: NextRequest) {
   const path= request.nextUrl.pathname
-  const isPublic=path==='/login' || path=== '/signup'
+  const isPublic=path==='/login' || path=== '/signup'  || path=== '/verify'
   const token= request.cookies.get('token')?.value || ""
 
   //condition to check if the user is not logged in and is trying to access a private route
@@ -21,6 +21,7 @@ export const config = {
   matcher: [
     '/profile/:path*',
     '/login',
-    '/signup'
+    '/signup',
+    "/verify"
   ]
 }
